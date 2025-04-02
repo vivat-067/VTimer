@@ -56,7 +56,7 @@
             tlpMain.Name = "tlpMain";
             tlpMain.RowCount = 1;
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMain.Size = new Size(346, 206);
+            tlpMain.Size = new Size(365, 224);
             tlpMain.TabIndex = 0;
             // 
             // tlpAbout
@@ -74,7 +74,7 @@
             tlpAbout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpAbout.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
             tlpAbout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpAbout.Size = new Size(159, 193);
+            tlpAbout.Size = new Size(178, 211);
             tlpAbout.TabIndex = 0;
             tlpAbout.Paint += tableLayoutPanel1_Paint;
             // 
@@ -82,7 +82,7 @@
             // 
             btnClose.AutoEllipsis = true;
             btnClose.Dock = DockStyle.Right;
-            btnClose.Location = new Point(56, 167);
+            btnClose.Location = new Point(75, 185);
             btnClose.Margin = new Padding(3, 3, 15, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(88, 23);
@@ -101,17 +101,17 @@
             flpAbout.Controls.Add(labDescription);
             flpAbout.Dock = DockStyle.Fill;
             flpAbout.FlowDirection = FlowDirection.TopDown;
-            flpAbout.Location = new Point(8, 3);
+            flpAbout.Location = new Point(9, 3);
             flpAbout.Margin = new Padding(0, 3, 3, 3);
             flpAbout.Name = "flpAbout";
-            flpAbout.Size = new Size(148, 158);
+            flpAbout.Size = new Size(166, 176);
             flpAbout.TabIndex = 2;
             // 
             // labAppName
             // 
             labAppName.Dock = DockStyle.Right;
             labAppName.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            labAppName.Location = new Point(28, 0);
+            labAppName.Location = new Point(48, 0);
             labAppName.Name = "labAppName";
             labAppName.Size = new Size(114, 30);
             labAppName.TabIndex = 3;
@@ -123,7 +123,7 @@
             labVersion.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labVersion.Location = new Point(3, 30);
             labVersion.Name = "labVersion";
-            labVersion.Size = new Size(139, 23);
+            labVersion.Size = new Size(159, 23);
             labVersion.TabIndex = 4;
             labVersion.Text = "версия:";
             labVersion.TextAlign = ContentAlignment.MiddleCenter;
@@ -134,7 +134,7 @@
             labAssembley.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labAssembley.Location = new Point(3, 53);
             labAssembley.Name = "labAssembley";
-            labAssembley.Size = new Size(139, 23);
+            labAssembley.Size = new Size(159, 23);
             labAssembley.TabIndex = 5;
             labAssembley.Text = "сборка";
             labAssembley.TextAlign = ContentAlignment.MiddleCenter;
@@ -148,7 +148,7 @@
             labDevBy.Margin = new Padding(3, 3, 3, 8);
             labDevBy.Name = "labDevBy";
             labDevBy.RightToLeft = RightToLeft.No;
-            labDevBy.Size = new Size(139, 13);
+            labDevBy.Size = new Size(159, 13);
             labDevBy.TabIndex = 6;
             labDevBy.Text = "DevBy";
             labDevBy.TextAlign = ContentAlignment.MiddleCenter;
@@ -158,7 +158,7 @@
             labDescription.Dock = DockStyle.Left;
             labDescription.Location = new Point(3, 100);
             labDescription.Name = "labDescription";
-            labDescription.Size = new Size(139, 49);
+            labDescription.Size = new Size(159, 49);
             labDescription.TabIndex = 8;
             labDescription.Text = "Таймер напоминания\r\n о необходимости сделать перерыв";
             labDescription.TextAlign = ContentAlignment.MiddleCenter;
@@ -170,7 +170,7 @@
             pbLogo.Dock = DockStyle.Fill;
             pbLogo.Location = new Point(3, 3);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(175, 200);
+            pbLogo.Size = new Size(175, 218);
             pbLogo.TabIndex = 1;
             pbLogo.TabStop = false;
             // 
@@ -178,7 +178,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(346, 206);
+            ClientSize = new Size(365, 224);
             ControlBox = false;
             Controls.Add(tlpMain);
             MinimizeBox = false;
