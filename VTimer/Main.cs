@@ -1,6 +1,4 @@
 ﻿using System.Media;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms;
 using VTimer;
 
 namespace vTimer
