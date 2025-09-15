@@ -38,6 +38,7 @@
             flpTimerButtons = new FlowLayoutPanel();
             btnStart = new Button();
             btnStop = new Button();
+            btnPause = new Button();
             flpInterval = new FlowLayoutPanel();
             panHRS = new Panel();
             edHRS = new NumericUpDown();
@@ -86,7 +87,7 @@
             tlpMainLayout.RowCount = 2;
             tlpMainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tlpMainLayout.Size = new Size(339, 206);
+            tlpMainLayout.Size = new Size(364, 261);
             tlpMainLayout.TabIndex = 1;
             // 
             // btnClose
@@ -94,7 +95,7 @@
             btnClose.Dock = DockStyle.Right;
             btnClose.ImageIndex = 4;
             btnClose.ImageList = ilSmall;
-            btnClose.Location = new Point(240, 179);
+            btnClose.Location = new Point(265, 234);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(88, 24);
             btnClose.TabIndex = 0;
@@ -115,7 +116,7 @@
             ilSmall.Images.SetKeyName(4, "action_standby.png");
             ilSmall.Images.SetKeyName(5, "info.png");
             ilSmall.Images.SetKeyName(6, "gear.png");
-            ilSmall.Images.SetKeyName(7, "action_sound_mute.png");
+            ilSmall.Images.SetKeyName(7, "action_sound_low.png");
             // 
             // tableLayoutPanel2
             // 
@@ -129,7 +130,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(94, 170);
+            tableLayoutPanel2.Size = new Size(94, 225);
             tableLayoutPanel2.TabIndex = 3;
             // 
             // flpTimerButtons
@@ -137,11 +138,12 @@
             flpTimerButtons.AutoSize = true;
             flpTimerButtons.Controls.Add(btnStart);
             flpTimerButtons.Controls.Add(btnStop);
+            flpTimerButtons.Controls.Add(btnPause);
             flpTimerButtons.Dock = DockStyle.Top;
             flpTimerButtons.FlowDirection = FlowDirection.TopDown;
             flpTimerButtons.Location = new Point(3, 103);
             flpTimerButtons.Name = "flpTimerButtons";
-            flpTimerButtons.Size = new Size(94, 62);
+            flpTimerButtons.Size = new Size(94, 93);
             flpTimerButtons.TabIndex = 4;
             // 
             // btnStart
@@ -173,6 +175,21 @@
             btnStop.Text = "Стоп";
             btnStop.UseVisualStyleBackColor = true;
             btnStop.Click += btnStop_Click;
+            // 
+            // btnPause
+            // 
+            btnPause.AutoSize = true;
+            btnPause.Dock = DockStyle.Left;
+            btnPause.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPause.ImageIndex = 1;
+            btnPause.ImageList = ilSmall;
+            btnPause.Location = new Point(3, 65);
+            btnPause.Name = "btnPause";
+            btnPause.Size = new Size(88, 25);
+            btnPause.TabIndex = 4;
+            btnPause.Text = "Пауза";
+            btnPause.UseVisualStyleBackColor = true;
+            btnPause.Click += btnPause_Click;
             // 
             // flpInterval
             // 
@@ -292,7 +309,7 @@
             labElapsedTime.Margin = new Padding(3, 10, 3, 10);
             labElapsedTime.Name = "labElapsedTime";
             labElapsedTime.Padding = new Padding(0, 20, 0, 0);
-            labElapsedTime.Size = new Size(217, 156);
+            labElapsedTime.Size = new Size(242, 211);
             labElapsedTime.TabIndex = 5;
             labElapsedTime.Text = "00:00:00";
             labElapsedTime.TextAlign = ContentAlignment.TopCenter;
@@ -311,7 +328,7 @@
             // 
             panAuxButtons.Controls.Add(btnAbout);
             panAuxButtons.Controls.Add(btnOptions);
-            panAuxButtons.Location = new Point(3, 179);
+            panAuxButtons.Location = new Point(3, 234);
             panAuxButtons.Name = "panAuxButtons";
             panAuxButtons.Padding = new Padding(7, 0, 0, 0);
             panAuxButtons.Size = new Size(94, 24);
@@ -355,13 +372,13 @@
             niTimeIntervalElapsed.Icon = (Icon)resources.GetObject("niTimeIntervalElapsed.Icon");
             niTimeIntervalElapsed.Text = "Пора сделать перевыв!!! Вы сидите слишком долго!!!";
             niTimeIntervalElapsed.Visible = true;
-            niTimeIntervalElapsed.Click += niTimeIntervalElapsed_Click;            
+            niTimeIntervalElapsed.Click += niTimeIntervalElapsed_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(339, 206);
+            ClientSize = new Size(364, 261);
             Controls.Add(tlpMainLayout);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -418,5 +435,6 @@
         private Button btnOptions;
         private Button btnAbout;
         private ImageList ilSmall;
+        private Button btnPause;
     }
 }

@@ -13,8 +13,9 @@ namespace vTimer
      {
         private Thread? timerThread;
         private bool isRunning;
+        private bool isSuspended;
         private int intervalValue;
-        private IntervalCountDirection countDirection;
+        private IntervalCountDirection countDirection;        
 
         public event Action TimeElapsed;
         public event Action<int> Tick;
@@ -42,6 +43,7 @@ namespace vTimer
         public void Start()
         {
           isRunning = true;
+          isSuspended = false;  
            timerThread = new Thread(new ThreadStart(RunTimer));
            timerThread.Name = "TimerThread";
            timerThread.Start();
@@ -52,6 +54,12 @@ namespace vTimer
             isRunning = false;            
         }
 
+        public Boolean Pause()
+        {
+            isSuspended = !isSuspended;
+            return isSuspended;
+        }
+
         private void CountDown()
         {
             int remainingSeconds = intervalValue;
@@ -59,7 +67,8 @@ namespace vTimer
             while (remainingSeconds > 0 && isRunning)
             {
                 Thread.Sleep(1000); // Wait for 1 second
-                remainingSeconds--;
+                if (!isSuspended) 
+                    remainingSeconds--;
                 Tick?.Invoke(remainingSeconds);
             }
         }
@@ -88,6 +97,7 @@ namespace vTimer
             if (isRunning)
                 TimeElapsed?.Invoke();
         }
+
     }  
 
 }

@@ -56,7 +56,7 @@
             tlpMain.Name = "tlpMain";
             tlpMain.RowCount = 1;
             tlpMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMain.Size = new Size(365, 224);
+            tlpMain.Size = new Size(364, 261);
             tlpMain.TabIndex = 0;
             // 
             // tlpAbout
@@ -74,7 +74,7 @@
             tlpAbout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpAbout.RowStyles.Add(new RowStyle(SizeType.Absolute, 29F));
             tlpAbout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpAbout.Size = new Size(178, 211);
+            tlpAbout.Size = new Size(177, 248);
             tlpAbout.TabIndex = 0;
             tlpAbout.Paint += tableLayoutPanel1_Paint;
             // 
@@ -82,7 +82,7 @@
             // 
             btnClose.AutoEllipsis = true;
             btnClose.Dock = DockStyle.Right;
-            btnClose.Location = new Point(75, 185);
+            btnClose.Location = new Point(74, 222);
             btnClose.Margin = new Padding(3, 3, 15, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(88, 23);
@@ -104,7 +104,7 @@
             flpAbout.Location = new Point(9, 3);
             flpAbout.Margin = new Padding(0, 3, 3, 3);
             flpAbout.Name = "flpAbout";
-            flpAbout.Size = new Size(166, 176);
+            flpAbout.Size = new Size(165, 213);
             flpAbout.TabIndex = 2;
             // 
             // labAppName
@@ -170,7 +170,7 @@
             pbLogo.Dock = DockStyle.Fill;
             pbLogo.Location = new Point(3, 3);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(175, 218);
+            pbLogo.Size = new Size(175, 255);
             pbLogo.TabIndex = 1;
             pbLogo.TabStop = false;
             // 
@@ -178,7 +178,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(365, 224);
+            ClientSize = new Size(364, 261);
             ControlBox = false;
             Controls.Add(tlpMain);
             MinimizeBox = false;

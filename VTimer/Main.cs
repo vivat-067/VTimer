@@ -64,7 +64,7 @@ namespace vTimer
                (Convert.ToInt32(edHRS.Value) > 0 || Convert.ToInt32(edMIN.Value) > 0 || Convert.ToInt32(edSEC.Value) > 0))
             {
                 isActive = true;
-                SetUIState();                
+                SetUIState();
                 Console.Beep();
                 _timer.Interval((int)edHRS.Value, (int)edMIN.Value, (int)edSEC.Value);
                 _timer.CountDirection = (IntervalCountDirection)timerAppOptions.IntervalCountDirection;
@@ -75,6 +75,17 @@ namespace vTimer
                 MessageBox.Show("Введите время отсчета таймера");
             }
         }
+
+        private void PauseTimerAction()
+        {
+            if (isActive && _timer != null)
+            {               
+                bool isSuspended = _timer.Pause();
+                SetUIPauseButtonAppearance(isSuspended);
+                SetUIState();
+            }
+        }
+
 
         private void StopTimerAction()
         {
@@ -101,6 +112,7 @@ namespace vTimer
         private void SetUIState()
         {
             btnStart.Enabled = !isActive;
+            btnPause.Enabled = isActive;
             btnStop.Enabled = isActive;
             btnOptions.Enabled = !isActive;
 
@@ -113,6 +125,24 @@ namespace vTimer
 
             labElapsedTime.ImageIndex = isActive ? 0 : 1;
         }
+
+        private void SetUIPauseButtonAppearance(bool isSuspended)
+        {
+            const int iPauseImageIndex = 1;
+            const int iNoneImageIndex = -1;
+
+            if (isSuspended)
+            {
+                btnPause.ImageIndex = iNoneImageIndex;
+                btnPause.Text = "Продолжить";
+            }
+            else
+            {
+                btnPause.ImageIndex = iPauseImageIndex;
+                btnPause.Text = "Пауза";
+            }
+        }
+
 
         private void PlayTimerSound()
         {
@@ -165,10 +195,10 @@ namespace vTimer
 
         private bool ActivateIntervalSoundMarker(int remainingSeconds)
         {
-            return (remainingSeconds % (timerAppOptions.IntervalSoundMarkerTime*60)) == 0 ? true : false;
+            return (remainingSeconds % (timerAppOptions.IntervalSoundMarkerTime * 60)) == 0;
         }
 
-        private void PlayIntervalSoundMarker()
+        private static void PlayIntervalSoundMarker()
         {
             Console.Beep();
         }
@@ -184,6 +214,10 @@ namespace vTimer
             StartTimerAction();
         }
 
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            PauseTimerAction();
+        }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
@@ -226,7 +260,7 @@ namespace vTimer
         {
             timerSound.Stop();
         }
-        
+
     }
 
 }

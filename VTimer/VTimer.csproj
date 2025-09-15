@@ -7,8 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>alarm.ico</ApplicationIcon>
-    <AssemblyVersion>2504.02.1030</AssemblyVersion>
-    <FileVersion>2025.3</FileVersion>
+    <AssemblyVersion>2509.15.0951</AssemblyVersion>
+    <FileVersion>2025.9</FileVersion>
     <Description>vTimer - simple timer app  by Vit Vatkov</Description>
     <PackageIcon>alarm.png</PackageIcon>
     <Title>vTimer</Title>
