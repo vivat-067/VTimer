@@ -32,11 +32,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             tlpMainLayout = new TableLayoutPanel();
-            btnClose = new Button();
-            ilSmall = new ImageList(components);
             tableLayoutPanel2 = new TableLayoutPanel();
             flpTimerButtons = new FlowLayoutPanel();
             btnStart = new Button();
+            ilSmall = new ImageList(components);
             btnStop = new Button();
             btnPause = new Button();
             flpInterval = new FlowLayoutPanel();
@@ -52,8 +51,11 @@
             labElapsedTime = new Label();
             ilTimerBackground = new ImageList(components);
             panAuxButtons = new Panel();
-            btnAbout = new Button();
+            btnSound = new Button();
+            tlpControlButtons = new TableLayoutPanel();
             btnOptions = new Button();
+            btnAbout = new Button();
+            btnClose = new Button();
             ttOptions = new ToolTip(components);
             niTimeIntervalElapsed = new NotifyIcon(components);
             tlpMainLayout.SuspendLayout();
@@ -67,6 +69,7 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)edSEC).BeginInit();
             panAuxButtons.SuspendLayout();
+            tlpControlButtons.SuspendLayout();
             SuspendLayout();
             // 
             // tlpMainLayout
@@ -77,46 +80,18 @@
             tlpMainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
             tlpMainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpMainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
-            tlpMainLayout.Controls.Add(btnClose, 2, 1);
             tlpMainLayout.Controls.Add(tableLayoutPanel2, 0, 0);
             tlpMainLayout.Controls.Add(labElapsedTime, 2, 0);
             tlpMainLayout.Controls.Add(panAuxButtons, 0, 1);
+            tlpMainLayout.Controls.Add(tlpControlButtons, 2, 1);
             tlpMainLayout.Dock = DockStyle.Fill;
             tlpMainLayout.Location = new Point(0, 0);
             tlpMainLayout.Name = "tlpMainLayout";
             tlpMainLayout.RowCount = 2;
             tlpMainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tlpMainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tlpMainLayout.Size = new Size(364, 261);
             tlpMainLayout.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            btnClose.Dock = DockStyle.Right;
-            btnClose.ImageIndex = 4;
-            btnClose.ImageList = ilSmall;
-            btnClose.Location = new Point(265, 234);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(88, 24);
-            btnClose.TabIndex = 0;
-            btnClose.Text = "Выход";
-            btnClose.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnClose.UseVisualStyleBackColor = true;
-            btnClose.Click += btnClose_Click;
-            // 
-            // ilSmall
-            // 
-            ilSmall.ColorDepth = ColorDepth.Depth32Bit;
-            ilSmall.ImageStream = (ImageListStreamer)resources.GetObject("ilSmall.ImageStream");
-            ilSmall.TransparentColor = Color.Transparent;
-            ilSmall.Images.SetKeyName(0, "action_play.png");
-            ilSmall.Images.SetKeyName(1, "action_pause.png");
-            ilSmall.Images.SetKeyName(2, "action_stop.png");
-            ilSmall.Images.SetKeyName(3, "action_sound_mute.png");
-            ilSmall.Images.SetKeyName(4, "action_standby.png");
-            ilSmall.Images.SetKeyName(5, "info.png");
-            ilSmall.Images.SetKeyName(6, "gear.png");
-            ilSmall.Images.SetKeyName(7, "action_sound_low.png");
             // 
             // tableLayoutPanel2
             // 
@@ -130,7 +105,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
-            tableLayoutPanel2.Size = new Size(94, 225);
+            tableLayoutPanel2.Size = new Size(94, 218);
             tableLayoutPanel2.TabIndex = 3;
             // 
             // flpTimerButtons
@@ -155,11 +130,26 @@
             btnStart.ImageList = ilSmall;
             btnStart.Location = new Point(3, 3);
             btnStart.Name = "btnStart";
+            btnStart.Padding = new Padding(2, 0, 0, 0);
             btnStart.Size = new Size(88, 25);
             btnStart.TabIndex = 4;
             btnStart.Text = "Старт";
             btnStart.UseVisualStyleBackColor = true;
             btnStart.Click += btnStart_Click;
+            // 
+            // ilSmall
+            // 
+            ilSmall.ColorDepth = ColorDepth.Depth32Bit;
+            ilSmall.ImageStream = (ImageListStreamer)resources.GetObject("ilSmall.ImageStream");
+            ilSmall.TransparentColor = Color.Transparent;
+            ilSmall.Images.SetKeyName(0, "action_play.png");
+            ilSmall.Images.SetKeyName(1, "action_pause.png");
+            ilSmall.Images.SetKeyName(2, "action_stop.png");
+            ilSmall.Images.SetKeyName(3, "action_sound_mute.png");
+            ilSmall.Images.SetKeyName(4, "action_standby.png");
+            ilSmall.Images.SetKeyName(5, "info.png");
+            ilSmall.Images.SetKeyName(6, "gear.png");
+            ilSmall.Images.SetKeyName(7, "action_sound_low.png");
             // 
             // btnStop
             // 
@@ -309,7 +299,7 @@
             labElapsedTime.Margin = new Padding(3, 10, 3, 10);
             labElapsedTime.Name = "labElapsedTime";
             labElapsedTime.Padding = new Padding(0, 20, 0, 0);
-            labElapsedTime.Size = new Size(242, 211);
+            labElapsedTime.Size = new Size(242, 204);
             labElapsedTime.TabIndex = 5;
             labElapsedTime.Text = "00:00:00";
             labElapsedTime.TextAlign = ContentAlignment.TopCenter;
@@ -326,43 +316,85 @@
             // 
             // panAuxButtons
             // 
-            panAuxButtons.Controls.Add(btnAbout);
-            panAuxButtons.Controls.Add(btnOptions);
-            panAuxButtons.Location = new Point(3, 234);
+            panAuxButtons.Controls.Add(btnSound);
+            panAuxButtons.Dock = DockStyle.Fill;
+            panAuxButtons.Location = new Point(3, 227);
             panAuxButtons.Name = "panAuxButtons";
-            panAuxButtons.Padding = new Padding(7, 0, 0, 0);
-            panAuxButtons.Size = new Size(94, 24);
+            panAuxButtons.Padding = new Padding(5, 3, 1, 0);
+            panAuxButtons.Size = new Size(94, 31);
             panAuxButtons.TabIndex = 6;
             // 
-            // btnAbout
+            // btnSound
             // 
-            btnAbout.Dock = DockStyle.Left;
-            btnAbout.ImageIndex = 5;
-            btnAbout.ImageList = ilSmall;
-            btnAbout.Location = new Point(47, 0);
-            btnAbout.Margin = new Padding(5, 3, 3, 3);
-            btnAbout.Name = "btnAbout";
-            btnAbout.Size = new Size(40, 24);
-            btnAbout.TabIndex = 10;
-            btnAbout.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAbout.UseVisualStyleBackColor = true;
-            btnAbout.Click += btnAbout_Click;
+            btnSound.Dock = DockStyle.Top;
+            btnSound.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSound.ImageIndex = 7;
+            btnSound.ImageList = ilSmall;
+            btnSound.Location = new Point(5, 3);
+            btnSound.Name = "btnSound";
+            btnSound.Size = new Size(88, 25);
+            btnSound.TabIndex = 5;
+            btnSound.Text = "Звук";
+            btnSound.UseVisualStyleBackColor = true;
+            btnSound.Click += btnSound_Click;
+            // 
+            // tlpControlButtons
+            // 
+            tlpControlButtons.ColumnCount = 3;
+            tlpControlButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 51F));
+            tlpControlButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpControlButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 95F));
+            tlpControlButtons.Controls.Add(btnOptions, 0, 0);
+            tlpControlButtons.Controls.Add(btnAbout, 1, 0);
+            tlpControlButtons.Controls.Add(btnClose, 2, 0);
+            tlpControlButtons.Dock = DockStyle.Fill;
+            tlpControlButtons.Location = new Point(111, 227);
+            tlpControlButtons.Name = "tlpControlButtons";
+            tlpControlButtons.RowCount = 1;
+            tlpControlButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpControlButtons.Size = new Size(242, 31);
+            tlpControlButtons.TabIndex = 7;
             // 
             // btnOptions
             // 
             btnOptions.Dock = DockStyle.Left;
-            btnOptions.ImageAlign = ContentAlignment.MiddleLeft;
             btnOptions.ImageIndex = 6;
             btnOptions.ImageList = ilSmall;
-            btnOptions.Location = new Point(7, 0);
+            btnOptions.Location = new Point(3, 3);
             btnOptions.Name = "btnOptions";
-            btnOptions.Padding = new Padding(10, 0, 0, 0);
-            btnOptions.Size = new Size(40, 24);
-            btnOptions.TabIndex = 9;
+            btnOptions.Size = new Size(40, 25);
+            btnOptions.TabIndex = 12;
             btnOptions.TextImageRelation = TextImageRelation.ImageBeforeText;
             ttOptions.SetToolTip(btnOptions, "Параметры");
             btnOptions.UseVisualStyleBackColor = true;
             btnOptions.Click += btnOptions_Click;
+            // 
+            // btnAbout
+            // 
+            btnAbout.ImageIndex = 5;
+            btnAbout.ImageList = ilSmall;
+            btnAbout.Location = new Point(56, 3);
+            btnAbout.Margin = new Padding(5, 3, 3, 3);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new Size(40, 25);
+            btnAbout.TabIndex = 11;
+            btnAbout.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += btnAbout_Click;
+            // 
+            // btnClose
+            // 
+            btnClose.Dock = DockStyle.Fill;
+            btnClose.ImageIndex = 4;
+            btnClose.ImageList = ilSmall;
+            btnClose.Location = new Point(150, 3);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(89, 25);
+            btnClose.TabIndex = 1;
+            btnClose.Text = "Выход";
+            btnClose.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // niTimeIntervalElapsed
             // 
@@ -405,6 +437,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)edSEC).EndInit();
             panAuxButtons.ResumeLayout(false);
+            tlpControlButtons.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -412,7 +445,6 @@
 
         #endregion
         private TableLayoutPanel tlpMainLayout;
-        private Button btnClose;
         private TableLayoutPanel tableLayoutPanel2;
         private Label labElapsedTime;
         private ToolTip ttOptions;
@@ -431,10 +463,13 @@
         private Panel panel2;
         private NumericUpDown edSEC;
         private Label labSEC;
-        private Panel panAuxButtons;
-        private Button btnOptions;
-        private Button btnAbout;
         private ImageList ilSmall;
         private Button btnPause;
+        private TableLayoutPanel tlpControlButtons;
+        private Button btnClose;
+        private Button btnOptions;
+        private Button btnAbout;
+        private Panel panAuxButtons;
+        private Button btnSound;
     }
 }

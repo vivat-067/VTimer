@@ -10,12 +10,13 @@ namespace VTimer
         public OptionsForm(VTimerAppOptions appOptions)
         {
             InitializeComponent();
+            Helper.SetFormBounds(this);
 
             _appOptions = appOptions;
             SetData();
             GetSoundFiles();
 
-            changed = false;
+            changed = false;            
             SetUIState();
         }
 

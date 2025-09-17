@@ -9,7 +9,8 @@ namespace vTimer
         private bool isActive = false;
         private CountdownTimer _timer;
         private SoundPlayer timerSound;
-        private VTimerAppOptions timerAppOptions;
+        private VTimerAppOptions timerAppOptions;        
+
 
         public MainForm()
         {
@@ -34,6 +35,7 @@ namespace vTimer
                 this.WindowState = FormWindowState.Minimized;
 
             SetUIState();
+            Helper.SetFormBounds(this);
         }
 
         private void OnLoadIntervalOptions()
@@ -79,7 +81,7 @@ namespace vTimer
         private void PauseTimerAction()
         {
             if (isActive && _timer != null)
-            {               
+            {
                 bool isSuspended = _timer.Pause();
                 SetUIPauseButtonAppearance(isSuspended);
                 SetUIState();
@@ -260,7 +262,15 @@ namespace vTimer
         {
             timerSound.Stop();
         }
+        private void btnSound_Click(object sender, EventArgs e)
+        {
+            ToggleSoundPlayState();
+        }
 
+        private void ToggleSoundPlayState()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

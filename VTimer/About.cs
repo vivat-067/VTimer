@@ -18,6 +18,7 @@ namespace VTimer
         public AboutForm()
         {
             InitializeComponent();
+            Helper.SetFormBounds(this);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

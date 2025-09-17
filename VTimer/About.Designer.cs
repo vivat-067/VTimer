@@ -168,9 +168,11 @@
             pbLogo.BackgroundImage = Properties.Resources.TimerAbout3;
             pbLogo.BackgroundImageLayout = ImageLayout.Stretch;
             pbLogo.Dock = DockStyle.Fill;
+            pbLogo.Image = Properties.Resources.Logo9;
             pbLogo.Location = new Point(3, 3);
             pbLogo.Name = "pbLogo";
             pbLogo.Size = new Size(175, 255);
+            pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.TabIndex = 1;
             pbLogo.TabStop = false;
             // 
