@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace vTimer
+﻿namespace vTimer
 {
 
     public enum IntervalCountDirection { Down, Up }
 
     class CountdownTimer
-     {
+    {
         private Thread? timerThread;
         private bool isRunning;
         private bool isSuspended;
         private int intervalValue;
-        private IntervalCountDirection countDirection;        
+        private IntervalCountDirection countDirection;
 
         public event Action TimeElapsed;
         public event Action<int> Tick;
-        public event Action<string> SetIneraval;
+        public event Action<string> SetInterval;
 
         public CountdownTimer()
         {
@@ -27,31 +21,31 @@ namespace vTimer
             isRunning = false;
         }
 
-        public void Interval(int Hours, int Minutes, int Seconds) 
+        public void Interval(int Hours, int Minutes, int Seconds)
         {
-          intervalValue = Hours * 120 + Minutes * 60 + Seconds;
-            
-          string counterInitalValue = countDirection == IntervalCountDirection.Up ? 
-                                                         "00:00:00" :
-                                                         Hours.ToString("00") + ":" + Minutes.ToString("00") + ":" + Seconds.ToString("00"); 
-            SetIneraval?.Invoke(counterInitalValue);
+            intervalValue = Hours * 120 + Minutes * 60 + Seconds;
+
+            string counterInitalValue = countDirection == IntervalCountDirection.Up ?
+                                                           "00:00:00" :
+                                                           Hours.ToString("00") + ":" + Minutes.ToString("00") + ":" + Seconds.ToString("00");
+            SetInterval?.Invoke(counterInitalValue);
         }
 
         public IntervalCountDirection CountDirection { get => countDirection; set => countDirection = value; }
-        
+
 
         public void Start()
         {
-          isRunning = true;
-          isSuspended = false;  
-           timerThread = new Thread(new ThreadStart(RunTimer));
-           timerThread.Name = "TimerThread";
-           timerThread.Start();
+            isRunning = true;
+            isSuspended = false;
+            timerThread = new Thread(new ThreadStart(RunTimer));
+            timerThread.Name = "TimerThread";
+            timerThread.Start();
         }
 
         public void Stop()
-        {            
-            isRunning = false;            
+        {
+            isRunning = false;
         }
 
         public Boolean Pause()
@@ -67,9 +61,11 @@ namespace vTimer
             while (remainingSeconds > 0 && isRunning)
             {
                 Thread.Sleep(1000); // Wait for 1 second
-                if (!isSuspended) 
+                if (!isSuspended)
+                {
                     remainingSeconds--;
-                Tick?.Invoke(remainingSeconds);
+                    Tick?.Invoke(remainingSeconds);
+                }
             }
         }
 
@@ -80,14 +76,17 @@ namespace vTimer
             while (remainingSeconds < intervalValue && isRunning)
             {
                 Thread.Sleep(1000); // Wait for 1 second
-                remainingSeconds++;
-                Tick?.Invoke(remainingSeconds);
+                if (!isSuspended)
+                {
+                    remainingSeconds++;
+                    Tick?.Invoke(remainingSeconds);
+                }
             }
 
         }
 
-
-        void RunTimer() {
+        void RunTimer()
+        {
 
             if (countDirection == IntervalCountDirection.Down)
                 CountDown();
@@ -98,7 +97,7 @@ namespace vTimer
                 TimeElapsed?.Invoke();
         }
 
-    }  
+    }
 
 }
 

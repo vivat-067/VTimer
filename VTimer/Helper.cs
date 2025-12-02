@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VTimer
+﻿namespace VTimer
 {
     internal class Helper
     {
@@ -18,7 +12,7 @@ namespace VTimer
             _ = defaultFormWidth > 0 ? defaultFormWidth : iDefaultFormWidth;
             _ = defaultFormHeight > 0 ? defaultFormHeight : iDefaultFormHeight;
 
-            form.Size = new Size(iDefaultFormWidth, iDefaultFormHeight);            
+            form.Size = new Size(iDefaultFormWidth, iDefaultFormHeight);
         }
 
         public Helper() { }

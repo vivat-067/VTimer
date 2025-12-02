@@ -9,7 +9,7 @@ namespace vTimer
         private bool isActive = false;
         private CountdownTimer _timer;
         private SoundPlayer timerSound;
-        private VTimerAppOptions timerAppOptions;        
+        private VTimerAppOptions timerAppOptions;
 
 
         public MainForm()
@@ -24,7 +24,7 @@ namespace vTimer
             _timer = new CountdownTimer();
             _timer.TimeElapsed += OnTimeElapsed;
             _timer.Tick += OnTimeTick;
-            _timer.SetIneraval += OnSetInterval;
+            _timer.SetInterval += OnSetInterval;
 
             timerSound = new SoundPlayer();
 
@@ -269,7 +269,7 @@ namespace vTimer
 
         private void ToggleSoundPlayState()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Dev is n progress");
         }
     }
 

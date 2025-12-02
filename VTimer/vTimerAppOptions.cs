@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using VTimer.Properties;
-
-namespace VTimer
+﻿namespace VTimer
 {
     public class VTimerAppOptions
     {
@@ -28,7 +20,7 @@ namespace VTimer
 
         public bool ElapsedIntervalDisplayAlert { get => elapsedIntervalDisplayAlert; set => elapsedIntervalDisplayAlert = value; }
         public bool ElapsedIntervalPlaySound { get => elapsedIntervalPlaySound; set => elapsedIntervalPlaySound = value; }
-        public string ElapsedIntervalSoundFileName { get => elapsedIntervalSoundFileName; set => elapsedIntervalSoundFileName = value; }              
+        public string ElapsedIntervalSoundFileName { get => elapsedIntervalSoundFileName; set => elapsedIntervalSoundFileName = value; }
 
         public int IntervalHours { get => intervalHours; set => intervalHours = value; }
         public int IntervalMinutes { get => intervalMinutes; set => intervalMinutes = value; }
@@ -36,20 +28,20 @@ namespace VTimer
         public int IntervalCountDirection { get => intervalCountDirection; set => intervalCountDirection = value; }
 
         public bool Changed { get => changed; set => changed = value; }
-        public string SoundFilesFolder { get => Path.GetDirectoryName(Application.ExecutablePath)+ @"\sound\"; }
+        public string SoundFilesFolder { get => Path.GetDirectoryName(Application.ExecutablePath) + @"\sound\"; }
 
         public bool IntervalSoundMarker { get => intervalSoundMarker; set => intervalSoundMarker = value; }
-        public int IntervalSoundMarkerTime { get => intervalSoundMarkerTime; set => intervalSoundMarkerTime = value; }        
+        public int IntervalSoundMarkerTime { get => intervalSoundMarkerTime; set => intervalSoundMarkerTime = value; }
 
         public event Action LoadIntervalOptions;
         public event Action SaveIntervalOptions;
 
         public VTimerAppOptions()
-          {             
-          }
+        {
+        }
 
-       public void Load()
-          {
+        public void Load()
+        {
             IntervalHours = Properties.Settings.Default.IntervalHours;
             IntervalMinutes = Properties.Settings.Default.IntervalMinutes;
             IntervalSeconds = Properties.Settings.Default.IntervalSeconds;
@@ -69,18 +61,20 @@ namespace VTimer
             LoadIntervalOptions?.Invoke();
 
             Changed = false;
-          }
+        }
 
         public void Save(bool isIntervalOnly)
-        {            
+        {
             if (isIntervalOnly)
             {
-               SaveIntervalOptions?.Invoke();
+                SaveIntervalOptions?.Invoke();
 
                 Properties.Settings.Default.IntervalHours = IntervalHours;
                 Properties.Settings.Default.IntervalMinutes = IntervalMinutes;
                 Properties.Settings.Default.IntervalSeconds = IntervalSeconds;
-            } else {
+            }
+            else
+            {
                 Properties.Settings.Default.APPAutostartCountdown = APPAutostartCountdown;
                 Properties.Settings.Default.APPStartMinimized = APPStartMinimized;
                 Properties.Settings.Default.IntervalCountDirection = IntervalCountDirection;
